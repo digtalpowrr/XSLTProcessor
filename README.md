@@ -1,5 +1,3 @@
-**Notice:** *As of the beginning of 2023 the Data Accessioner project no longer has any active developers maintaining it.*
-
 XSLT Processor
 ==============
 
