@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.dataaccessioner.xsltprocessor;
+package org.xsltprocessor;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -35,7 +35,7 @@ public class XSLTProcessor {
     java.util.ResourceBundle bundle;
     
     public XSLTProcessor() {
-        bundle = java.util.ResourceBundle.getBundle("org/dataaccessioner/xsltprocessor/resources/MessagesBundle"); // NOI18N
+        bundle = java.util.ResourceBundle.getBundle("org/xsltprocessor/resources/MessagesBundle"); // NOI18N
     }
 
     /**

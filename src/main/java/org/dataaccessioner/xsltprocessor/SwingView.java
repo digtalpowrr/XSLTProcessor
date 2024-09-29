@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.dataaccessioner.xsltprocessor;
+package org.xsltprocessor;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -80,7 +80,7 @@ public class SwingView extends javax.swing.JFrame {
         clearStatusBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/dataaccessioner/xsltprocessor/resources/MessagesBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/xsltprocessor/resources/MessagesBundle"); // NOI18N
         setTitle(bundle.getString("window.title")); // NOI18N
 
         addSrcBtn.setText(bundle.getString("add_source.btn")); // NOI18N
