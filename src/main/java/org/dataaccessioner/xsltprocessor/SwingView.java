@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package org.xsltprocessor;
+package org.dataaccessioner.xsltprocessor;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
