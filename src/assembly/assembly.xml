@@ -19,12 +19,17 @@
       <directory>src/main/resources/xslt</directory>
       <outputDirectory>xslt</outputDirectory>
     </fileSet>
+    <fileSet>
+      <directory>src/bin</directory>
+      <outputDirectory>/</outputDirectory>
+      <fileMode>0755</fileMode>
+    </fileSet>
   </fileSets>
   <files>
     <file>
       <source>target/${artifactId}-${version}.${packaging}</source>
       <outputDirectory>/</outputDirectory>
-      <destName>${artifactId}</destName>
+      <destName>${artifactId}.${packaging}</destName>
       <fileMode>0755</fileMode>
     </file>
     <file>
