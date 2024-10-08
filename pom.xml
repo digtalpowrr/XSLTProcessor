@@ -35,7 +35,7 @@
     <maven.enforcer.plugin>3.3.0</maven.enforcer.plugin>
     <maven.version.range>[3.9,)</maven.version.range>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <start-class>org.dataaccessioner.XSLTProcessori</start-class>
+    <start-class>org.dataaccessioner.xsltprocessor.XSLTProcessor</start-class>
   </properties>
 
   <dependencies>
@@ -92,7 +92,7 @@
             <configuration>
               <transformers>
                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>org.dataaccessioner.XSLTProcessor</mainClass>
+                  <mainClass>org.dataaccessioner.xsltprocessor.XSLTProcessor</mainClass>
                 </transformer>
               </transformers>
               <filters>
@@ -129,8 +129,9 @@
               <headerType>console</headerType>
               <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
               <outfile>${project.build.directory}/XSLTProcessor.exe</outfile>
+              <chdir>.</chdir>
               <classPath>
-                <mainClass>org.dataaccessioner.XSLTProcessor</mainClass>
+                <mainClass>org.dataaccessioner.xsltprocessor.XSLTProcessor</mainClass>
                 <preCp>anything</preCp>
               </classPath>
               <jre>
@@ -145,8 +146,8 @@
                 <txtProductVersion>1.2.0.0</txtProductVersion>
                 <productName>${project.name}</productName>
                 <companyName>dataaccessioner.org</companyName>
-                <internalName>dafixity</internalName>
-                <originalFilename>dafixity.exe</originalFilename>
+                <internalName>XSLTProcessor</internalName>
+                <originalFilename>XSLTProcessor.exe</originalFilename>
               </versionInfo>
             </configuration>
           </execution>

@@ -15,6 +15,10 @@
         <exclude>*/**</exclude>
       </excludes>
     </fileSet>
+    <fileSet>
+      <directory>src/main/resources/xslt</directory>
+      <outputDirectory>xslt</outputDirectory>
+    </fileSet>
   </fileSets>
   <files>
     <file>
@@ -35,6 +39,10 @@
     </file>
     <file>
       <source>src/main/resources/COPYING</source>
+      <outputDirectory>/</outputDirectory>
+    </file>
+    <file>
+      <source>src/main/resources/license.txt</source>
       <outputDirectory>/</outputDirectory>
     </file>
   </files>
