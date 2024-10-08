@@ -1,0 +1,186 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.dataaccessioner</groupId>
+  <artifactId>XSLTProcessor</artifactId>
+  <version>1.2</version>
+  <packaging>jar</packaging>
+
+  <name>XSLTProcessor</name>
+  <description>Transform Data Accessioner XML output to various formats.</description>
+  <url>https://github.com/digitalpowrr/XSLTProcessor</url>
+  <inceptionYear>2017</inceptionYear>
+  <organization>
+    <name>Digital POWRR</name>
+  </organization>
+
+  <developers>
+    <developer>
+      <id>sprater</id>
+      <name>Scott Prater</name>
+      <email>sprater@gmail.com</email>
+    </developer>
+  </developers>
+
+  <scm>
+    <url>https://github.com/digitalpowrr/XSLTProcessor</url>
+    <connection>scm:git:git://github.com/digitalpowrr/XSLTProcessor.git</connection>
+    <developerConnection>scm:git:git@github.com:digitalpowrr/XSLTProcessor.git</developerConnection>
+  </scm>
+
+  <properties>
+    <java.version>11</java.version>
+    <java.target>11</java.target>
+    <maven.enforcer.plugin>3.3.0</maven.enforcer.plugin>
+    <maven.version.range>[3.9,)</maven.version.range>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <start-class>org.dataaccessioner.xsltprocessor.XSLTProcessor</start-class>
+  </properties>
+
+  <dependencies>
+    <!-- Core dependencies -->
+    <dependency>
+      <groupId>org.jdom</groupId>
+      <artifactId>jdom2</artifactId>
+      <version>2.0.6.1</version>
+    </dependency>
+
+    <!-- Test dependencies -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>7.9.0</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.12.1</version>
+        <configuration>
+          <source>11</source>
+          <target>11</target>
+          <release>11</release>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <version>3.2.5</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.3.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>3.5.2</version>
+        <executions>
+          <!-- Run shade goal on package phase -->
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>org.dataaccessioner.xsltprocessor.XSLTProcessor</mainClass>
+                </transformer>
+              </transformers>
+              <filters>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>META-INF/*.SF</exclude>
+                    <exclude>META-INF/*.DSA</exclude>
+                    <exclude>META-INF/*.RSA</exclude>
+                    <exclude>META-INF/MANIFEST.MF</exclude>
+                    <exclude>META-INF/LICENSE.txt</exclude>
+                    <exclude>META-INF/NOTICE.txt</exclude>
+                    <exclude>module-info.class</exclude>
+                    <exclude>META-INF/versions/**</exclude>
+                  </excludes>
+                </filter>
+              </filters>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>com.akathist.maven.plugins.launch4j</groupId>
+        <artifactId>launch4j-maven-plugin</artifactId>
+        <version>2.5.0</version>
+        <executions>
+          <execution>
+            <id>l4j-clui</id>
+            <phase>package</phase>
+            <goals>
+              <goal>launch4j</goal>
+            </goals>
+            <configuration>
+              <headerType>console</headerType>
+              <jar>${project.build.directory}/${project.artifactId}-${project.version}.jar</jar>
+              <outfile>${project.build.directory}/XSLTProcessor.exe</outfile>
+              <chdir>.</chdir>
+              <classPath>
+                <mainClass>org.dataaccessioner.xsltprocessor.XSLTProcessor</mainClass>
+                <preCp>anything</preCp>
+              </classPath>
+              <jre>
+                <minVersion>11</minVersion>
+              </jre>
+              <versionInfo>
+                <fileVersion>1.2.0.0</fileVersion>
+                <txtFileVersion>1.2.0.0</txtFileVersion>
+                <fileDescription>${project.name}</fileDescription>
+                <copyright>2024 Digital POWRR</copyright>
+                <productVersion>1.2.0.0</productVersion>
+                <txtProductVersion>1.2.0.0</txtProductVersion>
+                <productName>${project.name}</productName>
+                <companyName>dataaccessioner.org</companyName>
+                <internalName>XSLTProcessor</internalName>
+                <originalFilename>XSLTProcessor.exe</originalFilename>
+              </versionInfo>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <version>3.6.0</version>
+        <configuration>
+          <descriptors>
+            <descriptor>src/assembly/assembly.xml</descriptor>
+          </descriptors>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>single</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <filtering>true</filtering>
+        <includes>
+          <include>**/*.properties</include>
+          <include>logback.xml</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+
+</project>

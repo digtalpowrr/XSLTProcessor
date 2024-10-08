@@ -1,7 +1,22 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Copyright © 2024 by Digital POWRR.
+ * Copyright © 2014, 2017 Seth Shaw.
+ *
+ *
+ * This library is free software; you can redistribute it and/or
+ * modify it under the terms of the GNU Lesser General Public
+ * License as published by the Free Software Foundation; either
+ * version 2.1 of the License, or (at your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+ * Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public
+ * License along with this library; if not, write to the Free Software
+ * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+ * MA 02110-1301  USA
  */
 
 package org.dataaccessioner.xsltprocessor;
@@ -12,6 +27,7 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.ResourceBundle;
 import javax.swing.DefaultListModel;
 import javax.swing.JFileChooser;
@@ -29,11 +45,11 @@ public class SwingView extends javax.swing.JFrame {
      * Creates new form SwingView
      */
     public SwingView() {
-        messages = ResourceBundle.getBundle("org.dataaccessioner.xsltprocessor.resources.MessagesBundle");
+        messages = ResourceBundle.getBundle("MessagesBundle");
         //Load any xslt found
-        for(File transform: new File("xslt").listFiles(new FilenameFilter() {
+        for(File transform: Objects.requireNonNull(new File("xslt").listFiles(new FilenameFilter() {
             private final String[] okFileExtensions = new String[]{"xsl", "xslt"};
-            
+
             @Override
             public boolean accept(File dir, String name) {
                 for (String extension : okFileExtensions) {
@@ -43,7 +59,7 @@ public class SwingView extends javax.swing.JFrame {
                 }
                 return false;
             }
-        })){
+        }))){
             transLstMdl.addElement(transform.getAbsolutePath());
         }
         
@@ -80,7 +96,7 @@ public class SwingView extends javax.swing.JFrame {
         clearStatusBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("org/dataaccessioner/xsltprocessor/resources/MessagesBundle"); // NOI18N
+        java.util.ResourceBundle bundle = java.util.ResourceBundle.getBundle("MessagesBundle"); // NOI18N
         setTitle(bundle.getString("window.title")); // NOI18N
 
         addSrcBtn.setText(bundle.getString("add_source.btn")); // NOI18N
