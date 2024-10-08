@@ -11,8 +11,8 @@ into a spreadsheet, or an HTML report, suitable for display on the web.
 
 Feel free to modify these as you see fit, or create your own transforms.
 
-The default set of xslt are intended to transform the output of files from the 
-Data Accessioner 1.0, 1.1, and 1.2.
+The default set of xslt are intended to transform the output of files from 
+Data Accessioner versions 1.0, 1.1, and 1.2.
 
 ## Install
 
@@ -92,7 +92,7 @@ the `target/` folder directly:
 
 ## License
 
-Copyright © 2024 by Digital POWRR.
+Copyright © 2024 by Digital POWRR.  
 Copyright © 2014, 2017 by Seth Shaw.
 
 DAFixity is free software: you can redistribute it and/or modify
