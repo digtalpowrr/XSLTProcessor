@@ -33,7 +33,7 @@ Double-click the `XSLTProcessor` executable file or `start.bat` in the install d
 
 Open a terminal application (Terminal in Mac), then run the following commands:
 
-    cd <XSLTPROCESSROR_DIRECTORY>
+    cd <XSLTPROCESSOR_DIRECTORY>
     ./start.sh
 
 Where *<XSLTPROCESSOR_DIRECTORY>* is the folder where you installed XSLTProcessor.
